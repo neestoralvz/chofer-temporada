@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Calculator, FileText, CheckSquare, Scale, TrendingUp, Users, Clock, DollarSign } from 'lucide-react'
+import { Calculator, FileText, CheckSquare, Scale, TrendingUp, Users } from 'lucide-react'
 import { compararModalidades, SALARIOS_MINIMOS } from '@/lib/utils'
 
 export default function Dashboard() {

@@ -30,10 +30,8 @@ export const CUOTAS_IMSS = {
 
 export function calcularCostosLaborales(
   salarioDiario: number,
-  diasTrabajados: number,
-  modalidad: 'indefinido' | 'determinado' | 'discontinuo'
+  diasTrabajados: number
 ) {
-  const salarioMensual = salarioDiario * 30
   const salarioAnual = salarioDiario * diasTrabajados
   
   // Cálculo base de IMSS (simplificado)
@@ -41,9 +39,9 @@ export function calcularCostosLaborales(
   const infonavit = salarioAnual * CUOTAS_IMSS.INFONAVIT
   
   // Prestaciones
-  let aguinaldo = (salarioDiario * 15) * (diasTrabajados / 365)
-  let vacaciones = Math.floor(diasTrabajados / 365) * 6 * salarioDiario
-  let primaVacacional = vacaciones * 0.25
+  const aguinaldo = (salarioDiario * 15) * (diasTrabajados / 365)
+  const vacaciones = Math.floor(diasTrabajados / 365) * 6 * salarioDiario
+  const primaVacacional = vacaciones * 0.25
   
   const totalPrestaciones = aguinaldo + vacaciones + primaVacacional
   const totalAnual = salarioAnual + cuotasIMSS + infonavit + totalPrestaciones
@@ -68,8 +66,8 @@ export function compararModalidades(
   diasDiscontinuo: number = 180
 ) {
   return {
-    indefinido: calcularCostosLaborales(salarioDiario, diasIndefinido, 'indefinido'),
-    determinado: calcularCostosLaborales(salarioDiario, diasDeterminado, 'determinado'),
-    discontinuo: calcularCostosLaborales(salarioDiario, diasDiscontinuo, 'discontinuo')
+    indefinido: calcularCostosLaborales(salarioDiario, diasIndefinido),
+    determinado: calcularCostosLaborales(salarioDiario, diasDeterminado),
+    discontinuo: calcularCostosLaborales(salarioDiario, diasDiscontinuo)
   }
 }
